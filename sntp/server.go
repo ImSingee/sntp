@@ -23,10 +23,12 @@ const (
 // check the request format.
 // get time from local and respond.
 func Serve(req []byte) ([]byte, error) {
+	fmt.Println("New Request")
 	if validFormat(req) {
 		res := generate(req)
 		return res, nil
 	}
+	fmt.Println("Invalid format")
 	return []byte{}, errors.New("invalid format.")
 }
 
