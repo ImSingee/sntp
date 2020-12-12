@@ -6,6 +6,7 @@ package sntp
 
 import (
 	"errors"
+	"fmt"
 	"time"
 )
 
@@ -95,7 +96,9 @@ func int2bytes(i int64) []byte {
 */
 
 func generate(req []byte) []byte {
-	var second = unix2ntp(time.Now().AddDate(1, 0, 0).Unix())
+	fmt.Println("New Request")
+
+	var second = unix2ntp(time.Now().AddDate(3, 0, 0).Unix())
 	var fraction = unix2ntp(int64(time.Now().Nanosecond()))
 	var res = make([]byte, 48)
 	var vn = req[0] & 0x38
